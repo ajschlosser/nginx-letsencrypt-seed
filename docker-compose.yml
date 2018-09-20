@@ -1,0 +1,10 @@
+web:
+  image: nginx
+  volumes:
+   - ${NGINX_CONF_SOURCE}:/etc/nginx/
+   - ${NGINX_WWW_SOURCE}:/var/www/
+   - /etc/letsencrypt/live/${LETSENCRYPT_FQDN}/fullchain.pem:/etc/ssl/certs/fullchain.pem
+   - /etc/letsencrypt/live/${LETSENCRYPT_FQDN}/privkey.pem:/etc/ssl/private/privkey.pem
+  ports:
+   - "80:80"
+   - "443:443"
